@@ -1,0 +1,123 @@
+import React from "react"
+import { Form, TextArea } from 'semantic-ui-react'
+import styled from "styled-components"
+
+const DetailDiv = styled.div`
+section {
+  width:450px;
+}
+comphead {
+    
+    margin-bottom: 2rem;
+    
+    overflow: hidden;
+      
+  }
+  .comp_item { 
+    float:left;
+    margin: 30px 30px 0 0px;
+    padding:10
+    
+  }
+  
+`
+
+
+const DetailList = (props) => {
+
+  return ( <DetailDiv>
+    <section>
+   
+      {props.countList && props.countList.map((item, i) => (
+        <div key={i} className='comphead'>
+            <div id={i}  class='comp_item 1' >
+            <label>{i+1} 비교1</label>
+           
+              <Form>
+              <TextArea class={i}
+                autoSize={{ minRows: 6, maxRows: 6 }}
+              />
+              
+              </Form>
+ <button  id={i} class="ui button"  >비교1에추가 </button>
+</div><div id={i} class='comp_item 2' >
+            <label >{i+1} 비교2</label>
+            
+              <Form>
+              <TextArea class={i}
+                autoSize={{ minRows: 6, maxRows: 6 }}
+              />
+              </Form>
+ <button  id={i} class="ui button">비교2에 추가</button>
+            </div>
+        </div>
+
+
+        
+      ))}
+    </section></DetailDiv>
+  )
+}
+
+export default DetailList
+
+
+import React from "react"
+import { Form, TextArea } from 'semantic-ui-react'
+import styled from "styled-components"
+
+const DetailDiv = styled.div`
+  div {
+    float:left
+    margin-bottom: 2rem;
+    
+  }
+  .button {
+    margin: 30px 30px 0 0px;
+    padding:10
+  }
+  
+`
+
+
+const DetailList2 = (props) => {
+  const value= props.test.length>0?  props.test.map((a)=>{
+   const cc=  a.compare.split(',')
+    return cc
+
+  }):false
+  return (
+
+    <DetailDiv>
+      
+ {props.countList && props.countList.map((item, i) => (
+        <div key={i} >
+            
+            <label>{i+1} Project Select</label>
+           
+         
+          
+        </div>
+
+
+        
+      ))}
+      {value!=false? value[0].map((a,i)=>
+(<div>
+ 
+
+       <div class="ui buttons">
+       <button  key={i} class="ui button">{a}</button>
+    </div></div>
+      )): false
+       
+
+      }
+
+
+    </DetailDiv>
+
+)
+}
+
+export default DetailList2

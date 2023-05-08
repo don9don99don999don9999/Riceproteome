@@ -1,3 +1,0 @@
-Celery
-django_celery_results
-celery-progress

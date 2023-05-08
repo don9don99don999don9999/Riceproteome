@@ -1,0 +1,6 @@
+django-admin-import
+goatools
+django-spaghetti-and-meatballs
+celery-progress
+django-markdownx
+gunicorn
