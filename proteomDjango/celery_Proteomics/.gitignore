@@ -10,14 +10,7 @@ local_settings.py
 db.sqlite3
 db.sqlite3-journal
 media
-*.png
-*.dot
-*.sh
-*.gz
-*.ipynb
-*.yaml
-*.save
-*.txt
+
 # If your build process includes running collectstatic, then you probably don't need or want to include staticfiles/
 # in your Git repository. Update and uncomment the following line accordingly.
 # <django-project-name>/staticfiles/
@@ -97,6 +90,7 @@ target/
 # Jupyter Notebook
 .ipynb_checkpoints
 
+.ipynb
 # IPython
 profile_default/
 ipython_config.py
@@ -132,7 +126,7 @@ ipython_config.py
 __pypackages__/
 
 # Celery stuff
-celerybeat-schedule
+celerybeat-schedule.*
 celerybeat.pid
 
 # SageMath parsed files
@@ -180,3 +174,11 @@ cython_debug/
 
 # End of https://www.toptal.com/developers/gitignore/api/django
 gene2go
+
+.png
+.dot
+.sh
+.gz
+
+.yaml
+.save
