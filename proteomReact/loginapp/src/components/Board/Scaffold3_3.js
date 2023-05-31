@@ -676,7 +676,7 @@ const pvfc= pv+':'+fc
 
    formData.append("username",props.user)
   
-   fetch("http://203.255.11.229:5506/api/sn/", { 
+   fetch("http://127.0.0.1:5506/api/sn/", { 
     method : 'POST',
     headers: {
         Authorization : `JWT ${localStorage.getItem('token')}`,
@@ -697,7 +697,7 @@ const pvfc= pv+':'+fc
  
 {
   
-  const url=`http://203.255.11.229:5506/api/${response[0]}/`
+  const url=`http://127.0.0.1:5506/api/${response[0]}/`
 const awsom= [url,[url,pushdata,push2data,Analinfo,interitem1,expitem,pvfc]]
   updateProgress(awsom)
 }
@@ -750,7 +750,7 @@ const changeoption = (e) =>{
 //  setProgress(false) 
 }
 const changeoption2 = (e) =>{
-const url=`http://203.255.11.229:5506/api/${e[0]}/`
+const url=`http://127.0.0.1:5506/api/${e[0]}/`
 
  
 props.getGOID([url,e[1],e[2],e[3],e[4],expitem,e[5],e[6]])
@@ -761,7 +761,7 @@ useMemo(() => {
   props.user != false
   ?(
   
-    fetch('http://203.255.11.229:5506/api/Ainfolist/')
+    fetch('http://127.0.0.1:5506/api/Ainfolist/')
     .then((res)=>res.json())
     .then((posts)=>{
       const explistfiluser=posts//.results
@@ -986,7 +986,7 @@ const Example =(pro)=> {
     
     ?(
       
-  fetch('http://203.255.11.229:5506/Imgview/')
+  fetch('http://127.0.0.1:5506/Imgview/')
   .then((res)=>res.json())
   .then((posts)=>{
     const explistfiluser=posts//.results
