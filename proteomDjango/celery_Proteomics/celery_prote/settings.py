@@ -44,9 +44,9 @@ DEBUG = True
 SECRET_KEY = '(ssysiep$#gqzx%njv07h2=))1oxw8y^%^kpjqm(hqri=z62ma'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-CORS_ORIGIN_WHITELIST= ['http://localhost:3000','http://203.255.11.229:5616','http://riceproteome.plantprofile.net'] 
+CORS_ORIGIN_WHITELIST= ['127.0.0.1:5616'] 
 
-ALLOWED_HOSTS = ['203.255.11.229','*']
+ALLOWED_HOSTS = ['127.0.0.1']
 #
 
 
