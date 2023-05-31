@@ -20,7 +20,7 @@ function LoginModal(props){
       provider: 'google'
     }
 
-    fetch('http://203.255.11.229:5506/user/', {
+    fetch('http://127.0.0.1:5506/user/', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -36,7 +36,7 @@ function LoginModal(props){
       }else{
         // 서버에 Google 계정 이미 저장돼 있다면 Login 작업 수행
         // 로그인을 시도하기 전에 서버에 접근하기 위한 access token을 발급 받음
-        fetch('http://203.255.11.229:5506/login/', {  
+        fetch('http://127.0.0.1:5506/login/', {  
         method: 'POST',
           headers: {
             'Content-Type': 'application/json'
@@ -122,7 +122,7 @@ function LoginModal(props){
                 <input type="password" placeholder="please enter your password" id="password" onChange={handlePasswordChange}/>
                 <button className="JoinLoign-button" style={{'text-align': 'center'}} onClick={(e)=>{
                   e.preventDefault()
-                  fetch('http://203.255.11.229:5506/login/', {  
+                  fetch('http://127.0.0.1:5506/login/', {  
                   method: 'POST',
                     headers: {
                       'Content-Type': 'application/json'
@@ -152,7 +152,7 @@ function LoginModal(props){
                 <input type="password" placeholder="please enter your password" onChange={handlePasswordChange}/>
                 <button className="JoinLoign-button" style={{'text-align': 'center'}} onClick={(e)=>{
                   e.preventDefault()
-                  fetch('http://203.255.11.229:5506/user/', {
+                  fetch('http://127.0.0.1:5506/user/', {
                     method: 'POST',
                     headers:{
                       'Content-Type': 'application/json'
@@ -210,3 +210,4 @@ function LoginModal(props){
 
 
 export default LoginModal;
+
