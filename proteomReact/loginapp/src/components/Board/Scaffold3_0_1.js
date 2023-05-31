@@ -121,7 +121,7 @@ setRefrash(false))
    //   props.user != false      ?
    (
       
-        fetch('http://203.255.11.229:5506/api/uplist/')
+        fetch('http://127.0.0.1:5506/api/uplist/')
         .then((res)=>res.json())
         .then((posts)=>{
 
@@ -130,7 +130,7 @@ setRefrash(false))
           const tosTable= tosexp.map((a,i)=>{
             
             
-            const url= `http://203.255.11.229:5506/api/${'progress_'+a.taskId}/`
+            const url= `http://127.0.0.1:5506/api/${'progress_'+a.taskId}/`
             const taskfin=  a.taskfin!='fin'?      updateProgress(url) : 'fin'
       
              const falseck=Object.keys(getstate).length!=0 
@@ -178,7 +178,7 @@ setRefrash(false))
    // props.user != false?
    (
       
-  fetch('http://203.255.11.229:5506/api/uplist/')
+  fetch('http://127.0.0.1:5506/api/uplist/')
   .then((res)=>res.json())
   .then((posts)=>{
     const explistfiluser=posts//.results
@@ -186,7 +186,7 @@ setRefrash(false))
    
      const tosTable= tosexp.map((a,i)=>{
      
-      const url= `http://203.255.11.229:5506/api/${'progress_'+a.taskId}/`
+      const url= `http://127.0.0.1:5506/api/${'progress_'+a.taskId}/`
      const taskfin= a.taskfin!='fin'?      updateProgress(url) : 'fin'
 
      const taskid=  taskfin=='fin'? 'select' : 'data preprocessing'
