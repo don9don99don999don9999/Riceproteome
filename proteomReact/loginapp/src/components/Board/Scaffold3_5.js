@@ -1040,7 +1040,7 @@ form_data.append('project',props.GOID[7]);
 form_data.append('username', username);
 form_data.append('target', target)
 form_data.append('Analysisinfo', Analysisinfo);
-fetch("http://203.255.11.229:5506/api/snSn2/", {
+fetch("http://127.0.0.1:5506/api/snSn2/", {
     method : 'POST',
     headers: {
         Authorization : `JWT ${localStorage.getItem('token')}`,
@@ -1060,8 +1060,8 @@ fetch("http://203.255.11.229:5506/api/snSn2/", {
  
 { 
   
-  const url=`http://203.255.11.229:5506/api/${'progress_'+response[0]}/`
-  const url2=`http://203.255.11.229:5506/api/${'getvalues_'+response[0]}/`
+  const url=`http://127.0.0.1:5506/api/${'progress_'+response[0]}/`
+  const url2=`http://127.0.0.1:5506/api/${'getvalues_'+response[0]}/`
 const awsom= [url,[url2,exdata,ex2data,mergeitem,getGO,props.GOID[0],Analysisinfo,props.GOID[5],props.GOID[6],props.GOID[7],props.GOID[8],props.GOID[9]]]
   updateProgress(awsom)
 }
@@ -1098,7 +1098,7 @@ const mergeitems=[  props.GOID[8][2].split('VMV:')[1].split(';')[0].split(','),
   props.GOID[8][2].split('GO:')[1].split(';')[0].split(','),
   props.GOID[8][2].split('Bulk:')[1].split(';')[0].split(',')]
   
-    const url=`http://203.255.11.229:5506/api/${'getvalues_'+props.GOID[8][0]}/`
+    const url=`http://127.0.0.1:5506/api/${'getvalues_'+props.GOID[8][0]}/`
 
 
   props.getNETID([url,exdata,ex2data,mergeitems,getGO,props.GOID[0],Analysisinfo,props.GOID[5],props.GOID[6],props.GOID[7],props.GOID[8],props.GOID[9]])
