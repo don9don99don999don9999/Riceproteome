@@ -848,7 +848,7 @@ const projectid =  getproperty.proj//re2[0].proj
 //    formData.append("Search",select_option2);
    formData.append("username",props.user)
   
-   fetch("http://203.255.11.229:5506/api/sn/", { 
+   fetch("http://127.0.0.1:5506/api/sn/", { 
     method : 'POST',
     headers: {
         Authorization : `JWT ${localStorage.getItem('token')}`,
@@ -869,8 +869,8 @@ const projectid =  getproperty.proj//re2[0].proj
  
 {// console.log(response)
   
-  const progressUrl=`http://203.255.11.229:5506/api/${'progress_'+response[0]}/`
-  //const url2=`http://203.255.11.229:5506/api/${'getvalues_'+response[0]}/`
+  const progressUrl=`http://127.0.0.1:5506/api/${'progress_'+response[0]}/`
+  //const url2=`http://127.0.0.1:5506/api/${'getvalues_'+response[0]}/`
 //const awsom= [url,[url2,pushdata,push2data,Analinfo,interitem1,expitem,pvfc,projectid,getfindata,re2]]
   //updateProgress(awsom)
 
@@ -967,12 +967,12 @@ const changeoption2 = (e) =>{
 
 
   //  props.resultID[4]
-  const url=`http://203.255.11.229:5506/api/${'getvalues_'+e[0]}/`
+  const url=`http://127.0.0.1:5506/api/${'getvalues_'+e[0]}/`
 
   
-  const url2=`http://203.255.11.229:5506/api/${'progress_'+e[0]}/`
- //const url=`http://203.255.11.229:5506/api/${'progress_'+response[0]}/`
-//  const url2=`http://203.255.11.229:5506/api/${'getvalues_'+response[0]}/`
+  const url2=`http://127.0.0.1:5506/api/${'progress_'+e[0]}/`
+ //const url=`http://127.0.0.1:5506/api/${'progress_'+response[0]}/`
+//  const url2=`http://127.0.0.1:5506/api/${'getvalues_'+response[0]}/`
 
 
 //updateProgress2
@@ -1068,7 +1068,7 @@ useMemo(() => {
  // props.user != false?
   (
 
-    fetch('http://203.255.11.229:5506/api/Ainfolist/')
+    fetch('http://127.0.0.1:5506/api/Ainfolist/')
     .then((res)=>res.json())
     .then((posts)=>{
       const explistfiluser=posts//.results
@@ -1080,7 +1080,7 @@ useMemo(() => {
        
 a.taskId2.split(';').map((a,i)=>{ 
           
-          const url=`http://203.255.11.229:5506/api/${'progress_'+a}/`
+          const url=`http://127.0.0.1:5506/api/${'progress_'+a}/`
           updateProgress1_5(url)
         
 
@@ -1318,7 +1318,7 @@ const ckfinanalysis= (fingo == pvfc2 )&& (taskId3fin=='FinAnalysis')
 */
 
 
-const url=`http://203.255.11.229:5506/api/${'progress_'+a}/`
+const url=`http://127.0.0.1:5506/api/${'progress_'+a}/`
 
 if (ckfinanalysis==true){
   return    changeoption2([a,pro.data[0],pro.data[1],props.resultID[4],interitem1,pvval+':'+fcval,getproperty.proj,getfindata,re2])
@@ -1407,7 +1407,7 @@ const uploadModule =async (e) =>{
 
         async function get3() {  
           try { setLoading(true);
-        const result =  await axios.get(`http://203.255.11.229:5506/api/${props.resultID[0]}/`).then((response) => {//,page:`${item2}`
+        const result =  await axios.get(`http://127.0.0.1:5506/api/${props.resultID[0]}/`).then((response) => {//,page:`${item2}`
         
        
         return response.data//.result
@@ -1654,7 +1654,7 @@ settossvennitems(prevennitems)
 //      props.user != false ?
 (
         
-    fetch('http://203.255.11.229:5506/Imgview/')
+    fetch('http://127.0.0.1:5506/Imgview/')
     .then((res)=>res.json())
     .then((posts)=>{
       const explistfiluser=posts//.results
