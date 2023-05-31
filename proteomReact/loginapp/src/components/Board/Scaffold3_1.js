@@ -82,8 +82,8 @@ function Scaffold3_1(props){
   formData.append("username",props.user); 
   formData.append("proj",expname);
   formData.append("Change2p",push2p);
-  //http://203.255.11.229:5506/api/private2publish/
-  fetch("http://203.255.11.229:5506/api/private2publish/", { 
+  //http://127.0.0.1:5506/api/private2publish/
+  fetch("http://127.0.0.1:5506/api/private2publish/", { 
    method : 'POST',
    headers: {
        Authorization : `JWT ${localStorage.getItem('token')}`,
@@ -124,8 +124,8 @@ function Scaffold3_1(props){
   formData.append("username",props.user); 
   formData.append("proj",expname);
   formData.append("Change2p",push2p2);
-  //http://203.255.11.229:5506/api/private2publish/
-  fetch("http://203.255.11.229:5506/api/private2publish/", { 
+  //http://127.0.0.1:5506/api/private2publish/
+  fetch("http://127.0.0.1:5506/api/private2publish/", { 
    method : 'POST',
    headers: {
        Authorization : `JWT ${localStorage.getItem('token')}`,
@@ -289,7 +289,7 @@ function Scaffold3_1(props){
 //    props.user != false    ?
     (
     
-      fetch('http://203.255.11.229:5506/api/Ainfolist/')
+      fetch('http://127.0.0.1:5506/api/Ainfolist/')
       .then((res)=>res.json())
       .then((posts)=>{
         const explistfiluser=posts//.results
@@ -298,7 +298,7 @@ function Scaffold3_1(props){
         const tosexp= props.EXPID!=false?  explistfiluser.filter(id=>(id.proj==props.EXPID)).filter(id=>id.projecttitle==props.ProjectID[0]) :false
         const tosTable= props.EXPID!=false?tosexp.map((a,i)=>{
 
-          const url= a.taskId !=''?  `http://203.255.11.229:5506/api/${'progress_'+a.taskId}/`:false
+          const url= a.taskId !=''?  `http://127.0.0.1:5506/api/${'progress_'+a.taskId}/`:false
           const taskIdfin= a.taskIdfin!='fin'?      updateProgress(url) : 'fin'
 
           const falseck=Object.keys(getstate).length!=0
@@ -342,7 +342,7 @@ function Scaffold3_1(props){
   useMemo(() => {
     //    props.user != false    ?
         
-          fetch('http://203.255.11.229:5506/api/projectlist/')
+          fetch('http://127.0.0.1:5506/api/projectlist/')
           .then((res)=>res.json())
           .then((posts)=>{
             const explistfiluser=posts.filter(id=>id.projectname==props.ProjectID[0]).map((a,i)=>{
@@ -375,7 +375,7 @@ function Scaffold3_1(props){
       useMemo(() => {
         //    props.user != false    ?
             
-              fetch('http://203.255.11.229:5506/api/projectlist/')
+              fetch('http://127.0.0.1:5506/api/projectlist/')
               .then((res)=>res.json())
               .then((posts)=>{
                 const explistfiluser=posts.filter(id=>id.projectname==props.ProjectID[0]).map((a,i)=>{
@@ -408,7 +408,7 @@ function Scaffold3_1(props){
 useEffect(() => {
   //    props.user != false    ?
       
-        fetch('http://203.255.11.229:5506/api/projectlist/')
+        fetch('http://127.0.0.1:5506/api/projectlist/')
         .then((res)=>res.json())
         .then((posts)=>{
           const explistfiluser=posts.filter(id=>id.projectname==props.ProjectID[0]).map((a,i)=>{
@@ -448,7 +448,7 @@ useEffect(() => {
 //    props.user != false   ?
     (
       
-  fetch('http://203.255.11.229:5506/api/Ainfolist/')
+  fetch('http://127.0.0.1:5506/api/Ainfolist/')
   .then((res)=>res.json())
   .then((posts)=>{
     const explistfiluser=posts//.results
@@ -456,7 +456,7 @@ useEffect(() => {
     const tosTable=props.EXPID!=false? tosexp.map((a,i)=>{
 
       
-      const url= a.taskId !='' ? `http://203.255.11.229:5506/api/${'progress_'+a.taskId}/`:false
+      const url= a.taskId !='' ? `http://127.0.0.1:5506/api/${'progress_'+a.taskId}/`:false
       const taskIdfin= a.taskIdfin!='fin' && a.taskId!=''?      updateProgress(url) : 'fin'
 
 //      PENDING
@@ -488,7 +488,7 @@ useEffect(() => {
    // props.user != false?
     (
       
-  fetch('http://203.255.11.229:5506/FileinfoAPI/')
+  fetch('http://127.0.0.1:5506/FileinfoAPI/')
   .then((res)=>res.json())
   .then((posts)=>{
     const explistfiluser=posts//.results
@@ -520,7 +520,7 @@ setRefrash(true)
 //    props.user != false    ?
 (
       
-  fetch('http://203.255.11.229:5506/FileinfoAPI/')
+  fetch('http://127.0.0.1:5506/FileinfoAPI/')
   .then((res)=>res.json())
   .then((posts)=>{
     const explistfiluser=posts//.results
@@ -971,7 +971,7 @@ else
  formData.append("FilterMethod",FilterMethod); 
  formData.append("enctype","multipart/form-data")
  
- fetch("http://203.255.11.229:5506/api/Ainfolist/", { 
+ fetch("http://127.0.0.1:5506/api/Ainfolist/", { 
   method : 'POST',
   headers: {
       Authorization : `JWT ${localStorage.getItem('token')}`,
@@ -1442,4 +1442,5 @@ For example, if you want to analyze experiment "B", you add Analysis information
 
 }
 export default Scaffold3_1;
+
 
