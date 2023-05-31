@@ -126,7 +126,7 @@ form_data.append('username', username);
 form_data.append('proj_info', proj_info)
 form_data.append('indexinfo', indexinfo);
 form_data.append('projidtitle',projidtitle)
-fetch("http://203.255.11.229:5506/api/getcompareinfo/", {
+fetch("http://127.0.0.1:5506/api/getcompareinfo/", {
     method : 'POST',
     headers: {
         Authorization : `JWT ${localStorage.getItem('token')}`,
@@ -161,7 +161,7 @@ fetch("http://203.255.11.229:5506/api/getcompareinfo/", {
   }
  
  /* 
-  const url=`http://203.255.11.229:5506/api/${response[0]}/`
+  const url=`http://127.0.0.1:5506/api/${response[0]}/`
 const analyinfo2=projidtitle+proj_info+indexinfo+filteritem
 const awsom= [url,[analyinfo2,proj_info,getcondition,url]]
   updateProgress(awsom)
@@ -338,7 +338,7 @@ setthrowValue([TodoList[0].Analysisinfo,TodoList[0].projecttitle,stringindex,Tod
     
     ?(
       
-  fetch('http://203.255.11.229:5506/api/Ainfolist/')
+  fetch('http://127.0.0.1:5506/api/Ainfolist/')
   .then((res)=>res.json())
   .then((posts)=>{
       const getAinfo=posts.filter(id=>(id.projecttitle==props.ProjectID) && (id.Analysisinfo==props.AID) && (id.username==props.user))
