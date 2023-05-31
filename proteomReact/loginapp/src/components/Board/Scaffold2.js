@@ -76,7 +76,7 @@ function Scaffold2(props){
       props.user != false
       
       ?(
-          fetch('http://203.255.11.229:5506/api/projectlist/')
+          fetch('http://127.0.0.1/api/projectlist/')
           .then((res)=>res.json())
           .then((posts)=>{
             const explistfiluser=posts.filter(id=>TFck([id.username,id.userlist] ).includes(props.user))
@@ -112,7 +112,7 @@ function Scaffold2(props){
       props.user != false
       ?(
       
-        fetch('http://203.255.11.229:5506/api/uplist/')
+        fetch('http://127.0.0.1:5506/api/uplist/')
         .then((res)=>res.json())
         .then((posts)=>{
           const explistfiluser=posts//.results
@@ -134,7 +134,7 @@ function Scaffold2(props){
       props.user != false
       
       ?(
-          fetch('http://203.255.11.229:5506/api/projectlist/')
+          fetch('http://127.0.0.1:5506/api/projectlist/')
           .then((res)=>res.json())
           .then((posts)=>{
             const explistfiluser=posts.filter(id=>TFck([id.username,id.userlist] ).includes(props.user))
@@ -172,7 +172,7 @@ function Scaffold2(props){
     
     ?(
       
-  fetch('http://203.255.11.229:5506/api/uplist/')
+  fetch('http://127.0.0.1:5506/api/uplist/')
   .then((res)=>res.json())
   .then((posts)=>{
     const explistfiluser=posts//.results
@@ -194,7 +194,7 @@ useEffect(()=>{
   
   ?(
     
-fetch('http://203.255.11.229:5506/user/userlist/')
+fetch('http://127.0.0.1:5506/user/userlist/')
 .then((res)=>res.json())
 .then((posts)=>{
   const explistfiluser=posts.map((a,i)=>{
@@ -339,7 +339,7 @@ formData.append("description",description);
 formData.append("username",props.user)  
 formData.append("enctype","multipart/form-data")
 
-fetch("http://203.255.11.229:5506/api/projectlist/", {  
+fetch("http://127.0.0.1:5506/api/projectlist/", {  
 method : 'POST',
 headers: {
    Authorization : `JWT ${localStorage.getItem('token')}`,
@@ -458,7 +458,7 @@ form_data.append('projectname',Project);
 form_data.append('userlist', arrayvalue.join())
 form_data.append('username', props.user)
 form_data.append('description',e.target[1].value)
-fetch("http://203.255.11.229:5506/api/adduser/", {
+fetch("http://127.0.0.1:5506/api/adduser/", {
     method : 'POST',
     headers: {
         Authorization : `JWT ${localStorage.getItem('token')}`,
@@ -622,7 +622,7 @@ const CardExampleHeaderCard = () => {
   
   
        /*<a href={row.Analysis} target="_blank">
-          http://203.255.11.229:5506/user/
+          http://127.0.0.1:5506/user/
           
         </a>*/ 
   
@@ -641,7 +641,7 @@ const CardExampleHeaderCard = () => {
         
   
        /*<a href={row.Analysis} target="_blank">
-          http://203.255.11.229:5506/user/
+          http://127.0.0.1:5506/user/
           
         </a>*/ 
   
@@ -725,7 +725,7 @@ const CardExampleHeaderCard = () => {
   
   
        /*<a href={row.Analysis} target="_blank">
-          http://203.255.11.229:5506/user/
+          http://127.0.0.1:5506/user/
           
         </a>*/ 
   
@@ -744,7 +744,7 @@ const CardExampleHeaderCard = () => {
         
   
        /*<a href={row.Analysis} target="_blank">
-          http://203.255.11.229:5506/user/
+          http://127.0.0.1:5506/user/
           
         </a>*/ 
   
