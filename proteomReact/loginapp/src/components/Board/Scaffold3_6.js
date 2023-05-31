@@ -242,8 +242,8 @@ const c2target= re3[2].filter(id=>id[3]==true).map(id=>{return id[1]}).join()
    formData.append("getprojectid",projectid);
 
      
-   //http://203.255.11.229:5506/api/private2publish/
-   fetch("http://203.255.11.229:5506/api/FinNet/", { 
+   //http://127.0.0.1:5506/api/private2publish/
+   fetch("http://127.0.0.1:5506/api/FinNet/", { 
     method : 'POST',
     headers: {
         Authorization : `JWT ${localStorage.getItem('token')}`,
