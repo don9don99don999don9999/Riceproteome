@@ -150,7 +150,7 @@ setRefrash(false))
       props.user != false
       
       ?(
-          fetch('http://203.255.11.229:5506/api/projectlist/')
+          fetch('http://127.0.0.1:5506/api/projectlist/')
           .then((res)=>res.json())
           .then((posts)=>{
             const explistfiluser=posts.filter(id=>id.username==props.user)
@@ -183,7 +183,7 @@ setRefrash(false))
       props.user != false
       ?(
       
-        fetch('http://203.255.11.229:5506/api/uplist/')
+        fetch('http://127.0.0.1:5506/api/uplist/')
         .then((res)=>res.json())
         .then((posts)=>{
 //.filter(id=>([id.username+','+id.userlist]).join().split(',').indexOf(props.user)!=-1)
@@ -193,7 +193,7 @@ setRefrash(false))
           const tosTable= tosexp.map((a,i)=>{
             
             
-            const url= `http://203.255.11.229:5506/api/${'progress_'+a.taskId}/`
+            const url= `http://127.0.0.1:5506/api/${'progress_'+a.taskId}/`
             const taskfin=  a.taskfin!='fin'?      updateProgress(a.description,a.projecttitle,url) : 'fin'
       
              const falseck=Object.keys(getstate).length!=0 
@@ -251,7 +251,7 @@ setRefrash(false))
       props.user != false
       
       ?(
-          fetch('http://203.255.11.229:5506/api/projectlist/')
+          fetch('http://127.0.0.1:5506/api/projectlist/')
           .then((res)=>res.json())
           .then((posts)=>{
             const explistfiluser=posts.filter(id=>id.username==props.user)
@@ -297,7 +297,7 @@ setRefrash(false))
     
     ?(
       
-  fetch('http://203.255.11.229:5506/api/uplist/')
+  fetch('http://127.0.0.1:5506/api/uplist/')
   .then((res)=>res.json())
   .then((posts)=>{
     const explistfiluser=posts//.results
@@ -305,7 +305,7 @@ setRefrash(false))
     
     const tosTable= tosexp.map((a,i)=>{
      
-      const url= `http://203.255.11.229:5506/api/${'progress_'+a.taskId}/`
+      const url= `http://127.0.0.1:5506/api/${'progress_'+a.taskId}/`
      const taskfin= a.taskfin!='fin'?      updateProgress(a.description,a.projecttitle,url) : 'fin'
 
      const taskid=  taskfin=='fin'? 'select' :  'data processing'
@@ -418,7 +418,7 @@ form_data.append('Expname',ExperimentName);
 form_data.append('taskid',progressUrl)
 form_data.append('projecttitle',projecttitle)
 
-fetch("http://203.255.11.229:5506/api/rmexp/", {
+fetch("http://127.0.0.1:5506/api/rmexp/", {
     method : 'POST',
     headers: {
         Authorization : `JWT ${localStorage.getItem('token')}`,
@@ -599,7 +599,7 @@ else{
   formData.append("Change2p",'Private')
   formData.append("enctype","multipart/form-data")
 
-  fetch("http://203.255.11.229:5506/api/uplist/", { 
+  fetch("http://127.0.0.1:5506/api/uplist/", { 
    method : 'POST',
    headers: {
        Authorization : `JWT ${localStorage.getItem('token')}`,
@@ -626,7 +626,7 @@ return res.json();
 
   
 
- // updateProgress(`http://203.255.11.229:5506/api/${response[0]}/`)
+ // updateProgress(`http://127.0.0.1:5506/api/${response[0]}/`)
 
 }
 
