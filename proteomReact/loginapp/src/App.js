@@ -94,13 +94,13 @@ function App() {
     if (isAuthenticated) {
       // 현재 JWT 토큰 값이 타당한지 GET /validate 요청을 통해 확인하고
       // 상태 코드가 200이라면 현재 GET /user/current 요청을 통해 user정보를 받아옴
-      fetch('http://203.255.11.229:5506/validate/', {
+      fetch('http://127.0.0.1:5506/validate/', {
         headers: {
           Authorization: `JWT ${localStorage.getItem('token')}`
         }
       })
       .then(res => {
-        fetch('http://203.255.11.229:5506/user/current/', {
+        fetch('http://127.0.0.1:5506/user/current/', {
           headers: {
             Authorization: `JWT ${localStorage.getItem('token')}`
           }
@@ -116,7 +116,7 @@ function App() {
             setisAuthenticated(false)
           }
           // Refresh Token 발급 받아 token의 만료 시간 연장
-          fetch('http://203.255.11.229:5506/refresh/', {
+          fetch('http://127.0.0.1:5506/refresh/', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json'
@@ -345,3 +345,4 @@ setinteritem3([])
 }
 
 export default App;
+
