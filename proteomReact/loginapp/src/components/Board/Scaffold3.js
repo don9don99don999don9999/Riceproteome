@@ -926,9 +926,26 @@ const CardExampleHeaderCard2 = () => {
   
    <br/>
  </DatatableWrapper>:
- props.user !=false? 
+ props.user !=false? <>
  <div>There is no Experiment in the project. Select New Experiment and upload it.
  </div>
+
+{props.user!=false && getoption!='New' ? 
+
+<Col style={{"display": "flex","justify-content": "end","align-items":"center"}}>  
+
+
+<Button variant="outline-dark"  size="sm"   onClick={() => ADDoption([true,'New'])} >New Experiment</Button> 
+
+
+
+      </Col>
+      
+
+:false}</>
+
+
+
 :
  <div> Login is required.</div>
  

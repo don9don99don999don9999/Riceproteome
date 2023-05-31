@@ -31,6 +31,14 @@ export default function Navigator2(props)  {
   "#FFA500" ,'#A52A2A' ,'#B5B5B5'
 ]
 
+const palette3= ["#5e5e5e",'#B5B5B5',"#50bcdf","#E31A1C",  "#6A3D9A","black"
+, "green"
+,"#CAB2D6"
+,"#FDBF6F","#FFF0F5","#8B0000","#FF33CC"
+,"darkturquoise",
+"#FFA500" ,'#A52A2A' ,'#B5B5B5'
+]
+
 ;
 
 
@@ -52,7 +60,7 @@ const innernodeinfo=        ['GroupA' , 'GroupB', 'VMV', 'GO' ,'BULK', 'VMV&GO' 
    
 const goitem = ['None','BP','MF','CC']
    //'#5e5e5e',
-const venndata= ['Identified' ]//['Venn area Type','Counts']
+const venndata= ['Identified','Unidentified' ]//['Venn area Type','Counts']
 const vennitems=props.vennitem.map(a=>{return a.sets[0]})  
 vennitems.map((a,i)=>{
   venndata.push(a)
@@ -157,9 +165,13 @@ else if(getop=='Chr'){
           <div style={{ backgroundColor: `${palette[iitem]}` }}>&nbsp;{c}&nbsp;</div>
         ));
 
-        const colorBoxes2 = Items.length>0 ? Items[0].map((c,i) => (
+        const colorBoxes2 = Items.length>0 ? getop=='Venn' ? Items[0].map((c,i) => (
+          <div style={{ backgroundColor: `${palette3[i]}` }}>&nbsp;{c}&nbsp;</div>
+        )): Items[0].map((c,i) => (
           <div style={{ backgroundColor: `${palette2[i]}` }}>&nbsp;{c}&nbsp;</div>
-        )):false
+        )): false
+      
+       
       
       return(<>
       
@@ -234,9 +246,9 @@ else if(getop=='Chr'){
           <p>VMV&BULK: VMV and BULK</p>
           <p>GO&BULK: GO and BULK</p>
           <p>VMV&GO&BULK: VMV and GO and BULK</p>
-          <p>With GroupA: Associated with Group A </p>
-          <p>With GroupB: Associated with Group B</p>
-          <p>With GroupA&B: Associated with group A and group B  </p>
+          <p>With GroupA: Node between two or more group A </p>
+          <p>With GroupB: Node between one group A and one group B</p>
+          <p>With GroupA&B:Node between Two or more group A, one or more group B </p>
           <p>yourprotein: Left-click to select. (Group A and Group B do not change color)  </p>
         </Accordion.Body>
       </Accordion.Item>

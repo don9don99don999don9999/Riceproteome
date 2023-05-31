@@ -7,9 +7,36 @@ import {Button, Accordion,Nav ,Container,Navbar,Form,Col,Row} from 'react-bootst
 import FloatingLabel from 'react-bootstrap/FloatingLabel'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { BsQuestionLg } from 'react-icons/bs';
-import Blink from 'react-blink-text';
+//import Blink from 'react-blink-text';
 
 function Navi_bot(props){
+
+
+
+   const [isAccordionOpen, setIsAccordionOpen] = useState(false);
+  const [mainContainerHeight, setMainContainerHeight] = useState(30);
+
+  const handleAccordionClick = () => {
+    setIsAccordionOpen(!isAccordionOpen);
+  };
+
+   useEffect(() => {
+    if( props.decision==0){
+    const vmv=document.querySelector("#root > div > nav.navbar.navbar-expand.navbar-dark.bg-secondary.fixed-bottom > div > div:nth-child(3) > div:nth-child(1) > form > div > div > h2 > button")
+    const go= document.querySelector("#root > div > nav.navbar.navbar-expand.navbar-dark.bg-secondary.fixed-bottom > div > div:nth-child(3) > div:nth-child(2) > form > div > div > h2 > button")
+    const bulk=document.querySelector("#root > div > nav.navbar.navbar-expand.navbar-dark.bg-secondary.fixed-bottom > div > div:nth-child(3) > div:nth-child(3) > form > div > div > h2 > button")
+    const vmvgobulkproperty=[ vmv.ariaExpanded, go.ariaExpanded, bulk.ariaExpanded]
+    const mainContainer = document.querySelector('#SCAFFOLD');
+    if (mainContainer) {
+    if(vmvgobulkproperty.includes('true')) {mainContainer.style.marginBottom='190px';}
+    else{ mainContainer.style.marginBottom='30px'; }
+
+
+    };
+  }
+  }, [isAccordionOpen]);
+
+ 
   const uploadModule3 =async (e) =>{
    
     //console.log(e)
@@ -106,7 +133,7 @@ useMemo(()=>{
 
 
         <>       
-        {props.decision==0? (<Navbar bg="dark" variant="dark" fixed="bottom" style={{'padding-top':'1rem'}}>
+        {props.decision==0? (<Navbar bg="secondary" variant="dark" fixed="bottom" style={{'padding-top':'1rem'}}>
         
     <Container>
    
@@ -135,14 +162,13 @@ useMemo(()=>{
 <Form onSubmit={uploadModule3 } >
  
 {good==1? 
-<text style={{ "font-size": "13px"}} >ProteinfromVMVPAGE</text>
+<text style={{ "font-size": "13px",color:'red'}} >ProteinfromVMVPAGE</text>
 :
-<Blink color='orange' text='ProteinfromVMVPAGE(Added)'
- fontSize='20' fontWeight='bold'>
-        </Blink>}
+<span  className="blink-text" style={{'fontWeight':'bold','color':'orange' }}> 
+      ProteinfromVMVPAGE(Added)  </span>}
 <Accordion  >
 
-        <Accordion.Item eventKey="0">
+        <Accordion.Item eventKey="0" active={isAccordionOpen} onClick={handleAccordionClick} >
         
 
           <Accordion.Header>ProteinfromVMVPAGE</Accordion.Header>
@@ -175,14 +201,13 @@ useMemo(()=>{
 <Col>
 <Form onSubmit={uploadModule3 }>
 {good2==1? 
-<text style={{ "font-size": "13px"}} >ProteinfromGO</text>
+<text style={{ "font-size": "13px" ,color:'yellow'}} >ProteinfromGO</text>
 :
 
-<Blink color='orange' text='ProteinfromGO(Added)'
-fontSize='20' fontWeight='bold'>
-       </Blink>}
+<span  className="blink-text" style={{'fontWeight':'bold','color':'orange' }}>
+       ProteinfromGO(Added)</span>}
 <Accordion  >
-        <Accordion.Item eventKey="0">
+        <Accordion.Item eventKey="0"  active={isAccordionOpen} onClick={handleAccordionClick} >
           <Accordion.Header>ProteinfromGO</Accordion.Header>
          
 <Accordion.Body>
@@ -207,19 +232,17 @@ placeholder={props.getitem2!=false? props.getitem2: ''} defaultValue={props.geti
         </Form>
 
 </Col>
-
 <Col>
 <Form>
 {good3==1? 
-<text style={{ "font-size": "13px"}} >proteinlist</text>
+<text style={{ "font-size": "13px",color:'blue'}} >proteinlist(bulk)</text>
 :
-<Blink color='orange' text='proteinlist(Added)'
-fontSize='20' fontWeight='bold'>
-       </Blink>}
+<span  className="blink-text" style={{'fontWeight':'bold','color':'orange' }}>
+       proteinlist_bulk(Added)</span>}
 
 <Accordion >
 
-        <Accordion.Item eventKey="0">
+        <Accordion.Item eventKey="0"  active={isAccordionOpen} onClick={handleAccordionClick} >
           <Accordion.Header>bulkprotein</Accordion.Header>
           <Accordion.Body>
           <FloatingLabel controlId="floatingTextarea2" label="add bulk">

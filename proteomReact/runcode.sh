@@ -1,1 +1,1 @@
-docker build -t proteomreact .
+docker build -t proteomreact_pub2 .

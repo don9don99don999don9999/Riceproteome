@@ -1,10 +1,9 @@
 
 import Chart from "react-google-charts";
-import React from 'react';
+import React,{useCallback} from 'react';
 import { View, StyleSheet, Text, } from 'react-native';
 import {Segment,Divider, Container,Button ,Dropdown ,Grid,Message,Form,Header}  from 'semantic-ui-react';
 import { BsQuestionLg } from 'react-icons/bs';
-
 
 
 import jStat from "jstat";
@@ -29,13 +28,13 @@ function Scharts(props ){
   const mjprotein =props.mjproteininfo
 
 //data를 만져서 v:~ f:~ 형태로 바꿔야함
-  const    ckhubline2=(index)=>{
-
-  
+  const    ckhubline2=useCallback((index)=>{
+//    index.preventdefault();
+    //index.preventdefault();
     const mjprotein = index.split(';')[0]
 
     props.getinterNodes(mjprotein)
-        }
+        },[])
   
 
 

@@ -2,7 +2,7 @@
 import Chart from "react-google-charts";
 import { View, StyleSheet, Text, } from 'react-native';
 import {Segment,Divider, Container,Button ,Dropdown ,Grid,Message,Form,Header}  from 'semantic-ui-react';
-import React,{useState, useEffect,Suspense} from 'react';
+import React,{useState, useEffect,Suspense,useCallback} from 'react';
 import { BsQuestionLg } from 'react-icons/bs';
 
 
@@ -103,13 +103,15 @@ const colors={ 'Chr1':col[0],'Chr2':col[1],'Chr3':col[2], 'Chr4':col[3],'Chr5':c
 
 
 function Mplot(props ){   
-  const    ckhubline2=(index)=>{
-
   
+  const    ckhubline2=useCallback((index)=>{
+    //index.preventdefault();
+    //index.preventdefault();
     const mjprotein = index[0]['f'].split(':')[1].split(';')[0]
 
     props.getinterNodes(mjprotein)
-        }
+    //
+        },[])
   
 
 

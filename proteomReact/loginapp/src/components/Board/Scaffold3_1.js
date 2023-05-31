@@ -352,7 +352,7 @@ function Scaffold3_1(props){
               
               )
             
-              console.log(props)
+            //  console.log(props)
 
               setuserlist(explistfiluser[0])
               
@@ -1220,7 +1220,11 @@ const filtergetexp =filtergetexp_eve.map((a,i)=>{
 
   return(
 
-
+/* 
+ {  props.user!=false &&ongoingcount<1 ?  
+ <> <Button variant="outline-dark"  size="sm"   onClick={() => ADDoption([true,'New'])} >New Analysis</Button> </>
+  :false}
+*/
 <>
    {
    TodoList!=false && getexp!=false &&numexp!=false && filtergetexp.length>0 ? 
@@ -1271,7 +1275,7 @@ const filtergetexp =filtergetexp_eve.map((a,i)=>{
    </Col> 
 
    <Col     className="d-flex flex-col justify-content-end align-items-center"    >
-   {  props.user!=false &&ongoingcount<1 ?  
+   {  userlist!=false &&ongoingcount<1 ?  
  <> <Button variant="outline-dark"  size="sm"   onClick={() => ADDoption([true,'New'])} >New Analysis</Button> </>
   :false}
    </Col> 
@@ -1292,7 +1296,7 @@ const filtergetexp =filtergetexp_eve.map((a,i)=>{
    </Col> 
 
    <Col     className="d-flex flex-col justify-content-end align-items-center"    >
-   {  props.user!=false &&ongoingcount<1 ?  
+   {  userlist!=false &&ongoingcount<1 ?  
  <> <Button variant="outline-dark"  size="sm"   onClick={() => ADDoption([true,'New'])} >New Analysis</Button> </>
   :false}
    </Col> 

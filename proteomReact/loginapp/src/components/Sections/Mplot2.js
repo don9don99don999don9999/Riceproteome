@@ -2,7 +2,7 @@
 import Chart from "react-google-charts";
 import { View, StyleSheet, Text, } from 'react-native';
 import {InputGroup, Container,Col,Row,Image,Modal,Button,Card,Form} from 'react-bootstrap';
-import React,{useState, useEffect,Suspense} from 'react';
+import React,{useState, useEffect,Suspense,useCallback} from 'react';
 import { BsQuestionLg } from 'react-icons/bs';
 
 
@@ -211,13 +211,14 @@ const tf=    data3test.length>0?true:false
 
 function Mplot2(props ){
    
-  const    ckhubline2=(index)=>{
+  const    ckhubline2=useCallback((index)=>{
     //ckhubline2의 mjprotein split고쳐줘야함
-  
+  //  index.preventdefault();
+//  index.preventdefault();
     const mjprotein = index[0]['f'].split(':')[1].split(';')[0]
 
     props.getinterNodes(mjprotein)
-        }
+        },[])
   
 
 

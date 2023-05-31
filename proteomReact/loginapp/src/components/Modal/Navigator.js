@@ -39,7 +39,7 @@ export default function Navigator(props)  {
 
 <Accordion defaultActiveKey={["0"]} alwaysOpen>
         <Accordion.Item eventKey="0">
-          <Accordion.Header>ProteinfromVMVPAGE</Accordion.Header>
+          <Accordion.Header style={{color:'red'}}>ProteinfromVMVPAGE</Accordion.Header>
           <Accordion.Body>
           <FloatingLabel controlId="floatingTextarea2" label="add from vmv ">
     <Form.Control
@@ -63,7 +63,7 @@ placeholder={props.interitem1} defaultValue={props.interitem1}
 
         {props.indexinfo == 2? 
         <Accordion.Item eventKey="1">
-          <Accordion.Header>ProteinfromGO</Accordion.Header>
+          <Accordion.Header style={{color:'green'}}>ProteinfromGO</Accordion.Header>
          
 <Accordion.Body>
 <FloatingLabel controlId="floatingTextarea2" label="add from GO">
@@ -89,7 +89,7 @@ placeholder={props.interitem2} defaultValue={props.interitem2}
 
         {props.indexinfo == 2?
         <Accordion.Item eventKey="2">
-          <Accordion.Header>bulkprotein</Accordion.Header>
+          <Accordion.Header style={{color:'blue'}}>bulkprotein</Accordion.Header>
           <Accordion.Body>
           <FloatingLabel controlId="floatingTextarea2" label="add bulk">
      <Form.Control

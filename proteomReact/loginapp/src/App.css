@@ -118,6 +118,7 @@ table{
   max-width:25px;
   overflow:hidden;
       text-overflow:ellipsis;
+      word-wrap:break-word
   }
   th{
   
@@ -128,4 +129,35 @@ table{
     margin: 5px;
      padding: 5px;
 
+  }
+/*
+  .ui.cyan {
+    color: #00FFFF;
+  }
+  .ui.magenta {
+    color: #FF00FF;
+  }
+  */
+  .ui.cyan {
+    color: #00FFFF !important;
+  }
+
+  .ui.magenta {
+    color: #FF00FF !important;
+  }
+
+  @keyframes blink {
+    0% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  
+  .blink-text {
+    animation: blink 1s infinite;
   }

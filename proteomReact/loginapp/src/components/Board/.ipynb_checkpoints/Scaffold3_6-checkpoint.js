@@ -21,7 +21,7 @@ import {
 } from "react-bs-datatable";
 import {Segment,Divider ,Dropdown ,Grid,Message,Header,Icon}  from 'semantic-ui-react';
 import * as Loader from "react-loader-spinner";
- 
+
 //import Loader from './Loader/Loader';
 import axios from "axios";
 import Scharts from "../Sections/Scharts"

@@ -27,7 +27,7 @@ services:
     
   frontend:
     container_name: proteomReact
-    image: proteomreact
+    image: proteomreact_pub2
     #build:
       #
       #context: ./proteomReact/

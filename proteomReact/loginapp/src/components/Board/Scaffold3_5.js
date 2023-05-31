@@ -125,6 +125,14 @@ function Scaffold3_5(props){
     const [getGO,setgetGO]=useState([]);
     const [mergeitem,setmergeitem]= useState([]);
 
+    const renderLabel = (label) => ({
+  
+      color: label.label.color,
+     content: `${label.text}`+ `(${label.label.comment})`  ,
+      
+      icon: 'check',
+    })
+
     const goDEP = (e) => {
 
 
@@ -789,26 +797,44 @@ setmergeitem(interitems)
 //exdata
 
 
-
                                                                                                   
+const colordic={ 'true,false,false':'red' ,
+'false,true,false':'yellow' ,
+'false,false,true':'blue' ,
+'true,true,false':'orange' ,
+'false,true,true':'green' ,
+'true,false,true':'purple' ,
+'true,true,true':'black' ,
 
-             
+
+}
+
+const colordic_get={ 'true,false,false':'V' ,
+'false,true,false':'G' ,
+'false,false,true':'B' ,
+'true,true,false':'VG' ,
+'false,true,true':'GB' ,
+'true,false,true':'VB' ,
+'true,true,true':'VGB' ,
 
 
+}
+
+//interitems
 const sourcegetnodes1=arrayvalue[0][0].length!=0? [].concat.apply(
   [],arrayvalue[0][0].map((a,i)=>{
     
-  
+    
 const bb=   a.includes('items')==true?  interitems[parseInt(a.substr(-1))-1  ] : false
 const cc= bb!=false? [].concat.apply(
   [], bb.map((itemtrim,index)=>{
     const item=itemtrim.trim().split('.')[0]
 
   const outdata= exdata.filter(id=>id.majorityproteinids.split('.')[0] ==item).length>0?
-  exdata.filter(id=>id.majorityproteinids.split('.')[0] ==item).map((aaa,i)=>{
-
-    return({key:aaa.majorityproteinids.split(';')[0],text: aaa.majorityproteinids.split(';')[0],value:aaa.majorityproteinids.split(';')[0]})
-  }): [({ key:item , text:item,value:item})]  //+':outitem'+a
+  exdata.filter(id=>id.majorityproteinids.split('.')[0] ==item).map((aaa,i)=>{ 
+    
+    return({key:aaa.majorityproteinids.split(';')[0],text: aaa.majorityproteinids.split(';')[0],value:aaa.majorityproteinids.split(';')[0],label: { color: colordic[interitems.map((id,index)=> id.includes(aaa.majorityproteinids.split(';')[0]))], empty: true, circular: true ,comment:colordic_get[interitems.map((id,index)=> id.includes(aaa.majorityproteinids.split(';')[0]))] }})
+  }): [({ key:item , text:item,value:item,label: { color: colordic[interitems.map((id,index)=> id.includes(item))], empty: true, circular: true ,comment:colordic_get[interitems.map((id,index)=> id.includes(item))]  } })]  //+':outitem'+a
 return outdata
 
 })) :false
@@ -901,6 +927,7 @@ useMemo(() => {
   
  
  setinteritem3(props.interitem3)
+ setpushck(false)
 }, [props.interitem3])
 
 
@@ -1207,7 +1234,7 @@ loading={false}
 <Row>    
 {props.data[1]=='FinAnalysis'?
 
-<Col><Button variant="dark"  onClick={(e)=> finthrowValue(props.data) }>END NETWORK Analysis</Button></Col>
+<Col><Button variant="primary" onClick={(e)=> finthrowValue(props.data) }>END NETWORK Analysis</Button></Col>
 
 :
 <Form onSubmit={uploadModule2} >
@@ -1243,9 +1270,21 @@ Proteins selected from Group A draw a NETWORK (Group A; node, edge) as a two-ste
 
 Select the protein you want to know about the relationship with'Group A'drawn with Source from Protein Basket in Group B to get Network (Result).
 </text>
+
+
 </Col>
-  </Row></>
+  </Row>
+  <Row>
+  <Col lg={6} sm={6}  md={6}  style={{"display": "flex", "justify-content": "left","align-items":"center"}}>
+  <text style={{'word-wrap':'break-word'}}>
+VMV,GOEA,Bulk is represented by the colors red (V), yellow (G), and blue (B). If the selected protein possesses both VMV and GOEA properties, it is indicated by the color orange (VG).</text>
+
+
+</Col>
+  </Row>
+  </>
  :false}
+
 
  <Row>
  {  (pushck==true) &&(findck==false)?<Alert color="secondary"> 
@@ -1280,6 +1319,7 @@ you must add protein from VMV Page,GOEA visualization PAGE,bulk item
   onSearchChange={null} //search value가 바뀐다.
   disabled={false}
   loading={false}
+  renderLabel={renderLabel}
 />:false}
 
 
@@ -1299,6 +1339,7 @@ you must add protein from VMV Page,GOEA visualization PAGE,bulk item
               onSearchChange={null} //search value가 바뀐다.
               disabled={false}
               loading={false}
+              renderLabel={renderLabel}
             />
         
     </>:false}
@@ -1313,7 +1354,7 @@ you must add protein from VMV Page,GOEA visualization PAGE,bulk item
 <p/>
 {getarrayvalue2!=false&&getarrayvalue!=false?
 //(getarrayvalue2[0][1].length >= 3 )  (getarrayvalue2[0][0].length >= 2 && getarrayvalue2[0][0].length <= 10)  
-    (getarrayvalue2[0][0].length >= 2 && getarrayvalue2[0][0].length <= 10)   ? <text style={{ width: '35rem' }} >Select protein list {':'}
+    (getarrayvalue2[0][0].length >= 2 && getarrayvalue2[0][0].length <= 10)   ? <text style={{ width: '35rem',"word-break":"break-all" }} >Select protein list {':'}
     {getarrayvalue2[0][0].join(',')}
     &nbsp;  Draw a network (GROUP A) within the TWO STEP neighbor of the selected protein.</text>:<Alert color="secondary" style={{ width: '35rem' }} > 
 

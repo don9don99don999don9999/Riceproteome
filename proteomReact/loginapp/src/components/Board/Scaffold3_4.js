@@ -590,7 +590,19 @@ function Scaffold3_4(props){
    const [interitem2,setinteritem2]= useState([]);
    const [images,setimages]= useState(false);
   
+   /*
+const [schartdata,setschartdata]=useState(null)
+const [downmplot,setdownmplot]=useState(null)
+const [upmplot,setupmplot]=useState(null)
 
+const [venndata,setvenndata]=useState(null)
+const [venninfodata,setvenninfodata]=useState(null)
+
+const [tossdata,settossdata]=useState(null)
+const [tosscomplist,settosscomplist]=useState(null)
+const [tossmjproteininfo,settossmjproteininfo]=useState(null)
+const [tossvennitems,settossvennitems]=useState(null)
+*/
 
 
    const handleSubmitdrop= (event) =>{
@@ -1410,6 +1422,199 @@ const uploadModule =async (e) =>{
 
 
 
+/*
+
+  
+
+const listlist=props.resultID[2].split(',')
+const wholelist=props.resultID[3].split(',')
+
+const toss2 = Array.from( [props.resultID[1]])
+
+const toss2val=  [...Array((toss2[0].split('Exp').splice(1).length/2))].map((a,i)=>{
+    
+    return     i
+    
+    
+    })
+
+    settossdata(toss2val)
+const arraytoss=toss2[0].split('Exp').splice(1).map((a,i)=>{
+return a
+
+//00,01,10,11
+//[1].split(',')[0]/3
+//var mySet = Array.from(new Set( [Math.floor(0.1),Math.floor(0.2),Math.floor(0.3) ,Math.floor(1.3)  ]))
+
+  
+})
+
+
+const getvaluesve=toss2val.map((item,index)=>{
+
+
+ const tossindex=  arraytoss.filter(id=>String(id.split(';')[0][0])==String(index))
+const conditionlist= tossindex.map((a,i)=>{
+
+ const Ncounts=   parseInt((wholelist.length)/(listlist.length))
+
+    
+   const setlist= a.split(';')[1].split(':').map((aa,k)=>{
+return Array.from(new Set(  aa.split(',').filter(id=>id!='').map((b,j)=>{
+
+  return wholelist[b].split('.').slice(0,-1).join(' ')
+}) 
+))   
+
+   }) 
+   
+//   .split(',').filter(id=>id!='').map((b,j)=>{       return wholelist[b]//.split('.').splice(0,3).join(' ')    })       //3,4,5
+
+    var mySet = setlist
+
+return mySet
+ }).join('  vs  ') 
+
+
+
+const jspvalue=  result.map((raw)=>{
+const chrinfo=raw.chrinfo
+const mjprotein=    raw.majorityproteinids
+  const logpvalue=  Math.log(parseFloat(raw.pvalue.split(',')[index].trim()))
+    
+    const log2fc=parseFloat(raw.foldchange.split(',')[index].trim())
+  return  [log2fc, logpvalue,mjprotein,chrinfo]
+  })
+ 
+
+//  const comparelabels=[arraytoscondition1,arraytoscondition2]
+const getFuncionDis=newDistribution(jspvalue,fc,pv)
+const newdataset = getFuncionDis[0]
+const newdatanodeinfo = getFuncionDis[1]
+
+    const updownsimdiflist = getFuncionDis[2]
+    const originparsedata = getFuncionDis[3]
+    const upmap = getFuncionDis[4]  
+    const downmap = getFuncionDis[5]  
+    const sampleheader=Object.keys(result[0]).filter(n=>n!='valuess')
+    const wholedata=result.map(val=>{return sampleheader.map(a=>{return val[a]})})
+    const labeltag=['compare'+(parseInt(index)+1)+'up','compare'+(parseInt(index)+1)+'down','compare'+(parseInt(index)+1)+'similar']
+    
+    return [updownsimdiflist,labeltag,originparsedata,sampleheader,wholedata,conditionlist,newdataset,upmap,downmap,newdatanodeinfo]//,comparelabels
+
+
+
+
+})
+
+//tag2
+
+
+
+
+const venvalue = [].concat.apply(
+  [],getvaluesve.map((item, i) => {
+   const item0= item.length>0? item[0]:[]
+return item0
+})
+);
+const venlabel = [].concat.apply(
+  [],getvaluesve.map((item, i) => {
+    const item1= item.length>0? item[1]:[]
+  return item1
+    }));
+   
+        const compareoriginparsedata =       getvaluesve.map((item, i) => {
+          const item2= item.length>0? item[2]:[]
+        return item2
+          })
+
+          const sampleheader_thr =       getvaluesve.map((item, i) => {
+            const item2= item.length>0? item[3]:[]
+          return item2
+            })
+            const wholedata_thr =       getvaluesve.map((item, i) => {
+              const item2= item.length>0? item[4]:[]
+            return item2
+              })
+      const precomplist =       getvaluesve.map((item, i) => {
+        const item2= item.length>0? item[5]:[]
+      return item2
+        })
+        const prenewdataset2 =       getvaluesve.map((item, i) => {
+          const item2= item.length>0? item[6]:[]
+        return item2
+          })
+
+
+          const preupmapset2 =       getvaluesve.map((item, i) => {
+            const item2= item.length>0? item[7]:[]
+          return item2
+            })
+
+            const predownmapset2 =       getvaluesve.map((item, i) => {
+              const item2= item.length>0? item[8]:[]
+            return item2
+              })
+//          setdataset(newdataset)
+const premjproteininfo =       getvaluesve.map((item, i) => {
+  const item2= item.length>0? item[9]:[]
+return item2
+  })
+
+const    vennvalabel=[venvalue,venlabel]
+
+const combinationbefore=wholecomb(venlabel,venlabel.length,toss2val.length)
+const combinations=combinationbefore[0]
+const combinations_holl=combinationbefore[1]
+const preoutcomb = setcombination(combinations,vennvalabel,combinations_holl)//.filter(n=>n.values.length>0)
+const exportexcel= funcex2cel(preoutcomb,compareoriginparsedata,sampleheader_thr,wholedata_thr)
+
+
+const preexdata=exportexcel[1]
+const exheader=exportexcel[0]
+
+const prevennitems=    preoutcomb.filter(id=>id.sets.length==1).map(a=>{return a.sets[0]})  
+
+settosscomplist(precomplist)
+setschartdata(prenewdataset2)
+setdownmplot(predownmapset2)
+setupmplot(preupmapset2)
+setvenndata(preoutcomb)
+setvenninfodata(preexdata)
+
+settossmjproteininfo(premjproteininfo)
+settossvennitems(prevennitems)
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
       }
 
       //proj
@@ -1489,8 +1694,23 @@ const uploadModule =async (e) =>{
   },[props.resultID])
 
     
+  
+
+
+
+/*
+  const newdataset2 = useMemo(() => schartdata, [pv,fc]);
+const downmapset2 = useMemo(() => downmplot, [downmplot]);
+const upmapset2 = useMemo(() => upmplot, [upmplot]);
+const outcomb = useMemo(() => venndata, [venndata]);
+
+const exdata = useMemo(() => venninfodata, [venninfodata]);
+const toss2val = useMemo(() => tossdata, [tossdata]);
+const complist = useMemo(() => tosscomplist, [tosscomplist]);
+const mjproteininfo = useMemo(() => tossmjproteininfo, [tossmjproteininfo]);
+const vennitems = useMemo(() => tossvennitems, [tossvennitems]);
+*/
   const CreateList = () => {
-    
     
     const [val,setval] = useState([])
    const [cutfc,setcutfc]=useState([])
@@ -1529,28 +1749,6 @@ const getvaluesve=( re2!=false  &&loading==false)?
 toss2val.map((item,index)=>{
 
 
-/*
-  const findlabel=toss2.filter(n=>n.id.includes(item)).filter(n=>n.id.includes('condition1')).map((a,i)=>{
-    return a.children
-  })
-  const arraylabel=Array.from(findlabel[0])
-
-  const findlabel2=toss2.filter(n=>n.id.includes(item)).filter(n=>n.id.includes('condition2')).map((a,i)=>{
-    return a.children
-  })
-  const arraylabel2=Array.from(findlabel2[0])
-
-  const arraytoscondition1= arraylabel.filter(n=>n.className.includes('label')).map((it,i)=>{
-    return it.text
-  })
-  const arraytoscondition2=arraylabel2.filter(n=>n.className.includes('label')).map((it,i)=>{
-    return it.text  })
-const conditionlist=  arraytoscondition1.map((item,i)=>{
-  const compareAB=arraytoscondition1[i] +'  vs  '+arraytoscondition2[i]
-    return compareAB
-  }).join(',') 
-
-  */
  const tossindex=  arraytoss.filter(id=>String(id.split(';')[0][0])==String(index))
 const conditionlist= tossindex.map((a,i)=>{
 
@@ -1569,13 +1767,6 @@ return Array.from(new Set(  aa.split(',').filter(id=>id!='').map((b,j)=>{
 //   .split(',').filter(id=>id!='').map((b,j)=>{       return wholelist[b]//.split('.').splice(0,3).join(' ')    })       //3,4,5
 
     var mySet = setlist
-/*
-   const Label= mySet.map((a,i)=>{
-
-        return listlist[a]
-    }).join(',') 
-    Label
-    */
 
 return mySet
  }).join('  vs  ') 
@@ -1679,16 +1870,35 @@ const exportexcel= funcex2cel(outcomb,compareoriginparsedata,sampleheader_thr,wh
 
 const exdata=exportexcel[1]
 const exheader=exportexcel[0]
+/*
+const [schartdata,setschartdata]=useState(prenewdataset2)
+const [downmplot,setdownmplot]=useState(predownmapset2)
+const [upmplot,setupmplot]=useState(preupmapset2)
 
+const [venndata,setvenndata]=useState(preoutcomb)
+const [venninfodata,setvenninfodata]=useState(preexdata)
+*/
+
+//schart
+//newdataset2
+
+//mplot
+//upmapset2 
+//downmapset2
+
+//venn
+//outcomb
 //exdata
 
 
+const vennitems=    outcomb.filter(id=>id.sets.length==1).map(a=>{return a.sets[0]})  
 const venntos = (e) => {
        props.tosvennvalues([outcomb,exdata,exheader,pv,fc])
   
    //     history('/govisualization')
       }
 
+      
       const palette2= ["blue","#E31A1C",  "#6A3D9A","black"
       , "green"
       ,"#CAB2D6"
@@ -1697,9 +1907,9 @@ const venntos = (e) => {
       "#FFA500" ,'#A52A2A' ,'#B5B5B5'
     ]
 
-   const vennitems=    outcomb.filter(id=>id.sets.length==1).map(a=>{return a.sets[0]})  
-
-   
+   //raw 1919
+   //toss2val.length>0  &&re2!=false &&loading==false? 
+   //toss2val !=undefined
     return(
 <>   
 
@@ -1709,7 +1919,7 @@ const venntos = (e) => {
 
   
     <Segment>
-{toss2val.length>0  &&re2!=false &&loading==false? 
+{ toss2val.length>0  &&re2!=false &&loading==false? 
  toss2val.map((item,index)=>{
 
   const stringvalue=  complist[index].replace(/ /g, '').replace('.', ' ');
@@ -1858,7 +2068,7 @@ return(
     </Container>
 
     </Segment>
-    {getvenn!=false? 
+    { getvenn!=false? 
 <Segment>
 
 <Container> 

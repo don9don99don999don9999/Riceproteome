@@ -841,9 +841,26 @@ const CardExampleHeaderCard = () => {
 
  </DatatableWrapper>:
 
-props.user !=false? 
+props.user !=false? <>
  <text>There is no project. Select the 'NEW PROJECT' button to create a project.
 </text>
+
+{props.user!=false && getoption!='New' &&getoption2!='Setting'? 
+
+
+<Col style={{"display": "flex","justify-content": "end","align-items":"center"}}>  
+<Button variant="outline-dark" size="sm"    onClick={() => ADDoption([true,'New'])} > NEW PROJECT</Button> 
+ 
+
+   
+      </Col>
+      
+  :false
+      
+      
+      
+}
+</>
 : <text> Login is required.</text>
 
 
