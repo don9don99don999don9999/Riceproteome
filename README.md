@@ -10,10 +10,10 @@ Move to the address('Riceproteome/proteomReact/loginapp/src/') and replace the '
 # 2. Build images
 1. Enter the directory(proteomDjango,proteomReact)
 2. build the docker image.
-sh runcode.sh
+```sh runcode.sh```
 
 # 3. Build docker compose
-docker compose up - d
+```docker compose up - d```
 
 ## 1. Using maxquant output data(proteingroups.txt)
 1. Repetition must be confirmed (rep1,rep2,rep3...)
