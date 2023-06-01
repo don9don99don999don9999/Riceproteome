@@ -10,6 +10,7 @@ Move to the address('Riceproteome/proteomReact/loginapp/src/') and replace the '
 # 2. Build images
 1. Enter the directory(proteomDjango,proteomReact)
 2. build the docker image.
+
 ```sh runcode.sh```
 
 # 3. Build docker compose
