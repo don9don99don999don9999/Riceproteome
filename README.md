@@ -40,6 +40,6 @@ You can download example data(1. proteinGroups_2018Y_Rice leaves (MSP1)_Label-fr
 
 ### "DEP", "GO" and "Network" are progressed step by step.
 
-# Through Experiment (Public)
-you can check the experiment and association analysis. http://riceproteome.plantprofile.net/Public
+# By Experiment(Public)
+You can explore the analysis results based on publicly available experimental data. http://riceproteome.plantprofile.net/Public
 
