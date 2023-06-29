@@ -22,7 +22,7 @@ Move to the address('Riceproteome/proteomReact/loginapp/src/') and replace the '
 3. Pooling is only considered in TMT studies, and "Pooling" should be included in the label.
 4. LFQ study uses "intensity corrected" value
 
-# Visit Riceproteome
+# Visit RPDB
 http://riceproteome.plantprofile.net/
 # Usage
 ## 1. sigh up & sign in
