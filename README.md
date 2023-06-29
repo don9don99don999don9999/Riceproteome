@@ -37,4 +37,5 @@ You can download example data(1. proteinGroups_2018Y_Rice leaves (MSP1)_Label-fr
 ## 6. go GO
 
 ## 7. go Network
-   
+
+### "DEP", "GO" and "Network" are progressed step by step.
